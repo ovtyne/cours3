@@ -1,4 +1,4 @@
-from utils import *
+from src.utils import *
 import pytest
 
 
@@ -90,10 +90,26 @@ def test_filter_data(test_data):
     ]
 
 
-def test_sort_data(test_data):
-    pass
-
-
 def test_transform_account():
     assert transform_account("Maestro 1596837868705199") == "Maestro 1596 83** **** 5199"
     assert transform_account("Счет **9589")
+
+
+def test_prepare_print_transaction():
+    print_data = [
+        {
+            "id": 863064926,
+            "state": "EXECUTED",
+            "date": "2019-12-08T22:46:21.935582",
+            "operationAmount": {
+                "amount": "41096.24",
+                "currency": {
+                    "name": "USD",
+                    "code": "USD"
+                }
+            },
+            "description": "Открытие вклада",
+            "to": "Счет 90424923579946435907"
+        }
+    ]
+    assert prepare_print_transaction(print_data[0]) == "08.12.2019 Открытие вклада\n -> Счет **5907\n41096.24 USD\n"
