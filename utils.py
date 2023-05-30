@@ -27,7 +27,6 @@ def sort_data(data):
 def transform_account(line):
     sublines = line.split(' ')
     number = sublines[-1]
-
     if sublines[0] == 'Счет':
         new_number = "**" + number[-4:]
     else:
