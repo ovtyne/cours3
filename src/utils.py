@@ -6,7 +6,7 @@ def read_json_data():
     Читает данный из файла operations.json
     :return: список транзакций
     """
-    with open('operations.json', 'r', encoding='utf-8') as json_file:
+    with open('../src/operations.json', 'r', encoding='utf-8') as json_file:
         data = json.loads(json_file.read())
     return data
 
